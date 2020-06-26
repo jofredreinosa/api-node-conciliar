@@ -3,15 +3,15 @@ const express = require('express');
 const routes = express.Router();
 const auth = require('../middlewares/auth');
 
-const productController = require('../controllers/productController');
+const transactionTypeController = require('../controllers/transactionTypeController');
 const userController = require('../controllers/userController');
 
-/* Rutas para productos */
-routes.get('/product', auth.isAuth, productController.getProducts);
-routes.get('/product/:id', productController.getProduct);
-routes.post('/product', productController.createProduct);
-routes.put('/product/:id', productController.updateProduct);
-routes.delete('/product/:id', productController.deleteProduct);
+/* Rutas para tipos de transacción */
+routes.get('/transactiontypes', transactionTypeController.getAll);
+routes.get('/transactiontypes/:id', transactionTypeController.getOne);
+routes.post('/transactiontypes', transactionTypeController.create);
+routes.put('/transactiontypes/:id', transactionTypeController.update);
+routes.delete('/transactiontypes/:id', transactionTypeController.remove);
 
 routes.get('/private' , auth.isAuth,  function(request, response) {
   console.log('acceso a ruta protegida');

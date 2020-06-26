@@ -9,10 +9,10 @@ const data = [
 
 module.exports = {
   async up(db, client) {
-    await db.collection('transactionTypes').insertMany(data);
+    await db.collection('transaction_types').insertMany(data);
   },
 
   async down(db, client) {
-    await db.collection('transactionTypes').drop();
+    await db.collection('transaction_types').drop();
   }
 };

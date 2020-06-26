@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const appconfig = require('./appconfig');
 
-mongoose.connect(appconfig.dbString , { useNewUrlParser: true, useUnifiedTopology: true }, ( err, response) => {
+mongoose.connect(appconfig.dbString , { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, ( err, response) => {
   if ( err ) {
     return console.log("Failed connecting to database, error: " + err);
   }

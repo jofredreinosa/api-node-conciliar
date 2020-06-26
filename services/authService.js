@@ -8,7 +8,7 @@ function createToken(user) {
   const payload = {
     sub: user._id,
     iat: moment.unix(),
-    exp: moment().add('days',14).unix()
+    exp: moment().add('hours',4).unix()
   }
 
   return jwt.encode(payload, appconfig.SECRET_TOKEN);
@@ -21,7 +21,7 @@ function decodeToken(token) {
       if ( payload.exp <= moment.unix()) {
         reject({
           status: 401,
-          message: 'Token expirado'
+          message: 'Su sesión ha expirado'
         })
       }
 
@@ -30,7 +30,7 @@ function decodeToken(token) {
     catch(error) {
       reject({
         status: 500,
-        message: 'Token Invalido'
+        message: 'Sesión Invalida'
       })
     }
   })
