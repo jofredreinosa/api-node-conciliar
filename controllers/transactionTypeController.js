@@ -4,7 +4,6 @@ const TransactionType = require('../models/transactionType');
 function getAll(request, response) {
   console.log('Get:  /api/transactiontypes');
   TransactionType.find({} , (error, data) => {
-    console.log(data);
     if (error) {
       console.log(error);
       response.status(500).send(
@@ -86,8 +85,8 @@ function create(request, response) {
   console.log('post: api/transactiontypes');
   const data = request.body;
   let transactionType = new TransactionType();
-  transactionType.code = data.code;
-  transactionType.description = data.description;
+  transactionType.code = data.code.toUpperCase();
+  transactionType.description = data.description.toUpperCase();
   transactionType.type = data.type;
 
   transactionType.save((error, createdEntity) => {
@@ -117,7 +116,9 @@ function create(request, response) {
 
 function update(request, response) {
   console.log('put: api/transactiontypes');
-  const data = request.body;
+  let data = request.body;
+  data.code = data.code.toUpperCase();
+  data.description = data.description.toUpperCase();
   let id = request.params.id;
 
   if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -131,7 +132,7 @@ function update(request, response) {
     );
   }
 
-  TransactionType.findByIdAndUpdateOne(id, data, (error, transactionType) => {
+  TransactionType.findByIdAndUpdate(id, data, (error, transactionType) => {
     if (error) {
       console.log('put fail ', error);
       return response.status(500).send(
