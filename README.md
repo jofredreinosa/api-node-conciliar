@@ -7,3 +7,4 @@
 * Se concecta a una bbdd mongo con mongoose.
 * Incluye migrations y seeders para la bbdd.
 
+En construcción...
