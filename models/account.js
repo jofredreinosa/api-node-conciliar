@@ -6,6 +6,7 @@ const accountSchema = new Schema({
     accountNumber: String,
     accountType: String,
     accountBankType: String,
+    accountBalance: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model('bank_account' , accountSchema);
