@@ -7,6 +7,8 @@ const accountSchema = new Schema({
     accountType: String,
     accountBankType: String,
     accountBalance: { type: Number, default: 0 },
+    isDeleted: Boolean,
+    deletedAt: Date,
 });
 
 module.exports = mongoose.model('bank_account' , accountSchema);
