@@ -92,7 +92,7 @@ function create(request, response) {
   transactionType.save((error, createdEntity) => {
     if (error) {
       console.log(error);
-      response.status(500).send(
+      return response.status(500).send(
         {
           success: false,
           message: "Error al crear el Tipo de transacción",
@@ -101,16 +101,16 @@ function create(request, response) {
       );
     }
 
-    response.status(201).send(
+    console.log('Entity transactiontype created successfully');
+    return response.status(201).send(
       {
         success: true,
         data: createdEntity,
         message: "Tipo de transacción creado con éxito"
       }
     );
-
   });
-  console.log('Entity transactiontype created successfully');
+  
 
 }
 

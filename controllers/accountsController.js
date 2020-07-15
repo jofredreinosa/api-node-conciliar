@@ -93,7 +93,7 @@ function create(request, response) {
   bankAccount.save((error, createdEntity) => {
     if (error) {
       console.log(error);
-      response.status(500).send(
+      return response.status(500).send(
         {
           success: false,
           message: "Error al crear la cuenta",
@@ -101,17 +101,15 @@ function create(request, response) {
         }
       );
     }
-
-    response.status(201).send(
+    console.log('Entity bank account created successfully');
+    return response.status(201).send(
       {
         success: true,
         data: createdEntity,
         message: "Cuenta bancaria creada con éxito"
       }
     );
-
   });
-  console.log('Entity bank account created successfully');
 
 }
 
