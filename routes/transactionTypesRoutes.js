@@ -1,15 +1,15 @@
 'use strict'
 const express = require('express');
-const transactionTypeRroutes = express.Router();
+const transactionTypeRoutes = express.Router();
 const auth = require('../middlewares/auth');
 
 const transactionTypeController = require('../controllers/transactionTypeController');
 
 /* Rutas para tipos de transacción */
-transactionTypeRroutes.get('/transactiontypes', transactionTypeController.getAll);
-transactionTypeRroutes.get('/transactiontypes/:id', transactionTypeController.getOne);
-transactionTypeRroutes.post('/transactiontypes', transactionTypeController.create);
-transactionTypeRroutes.put('/transactiontypes/:id', transactionTypeController.update);
-transactionTypeRroutes.delete('/transactiontypes/:id', transactionTypeController.remove);
+transactionTypeRoutes.get('/transactiontypes', transactionTypeController.getAll);
+transactionTypeRoutes.get('/transactiontypes/:id', transactionTypeController.getOne);
+transactionTypeRoutes.post('/transactiontypes', transactionTypeController.create);
+transactionTypeRoutes.put('/transactiontypes/:id', transactionTypeController.update);
+transactionTypeRoutes.delete('/transactiontypes/:id', transactionTypeController.remove);
 
-module.exports = transactionTypeRroutes;
+module.exports = transactionTypeRoutes;
