@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const transactionType = require('./transactionType');
 
 const TransactionSchema = new Schema({
-  accountId: String,
-  transactionType: String,
+  accountId: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' },
+  transactionType: [transactionType.schema],
   transactionDate: Date,
   transactionNumber: String,
   transactionMotive: String,
@@ -13,4 +14,4 @@ const TransactionSchema = new Schema({
   deletedAt: { type: Date, default: null },
 });
 
-module.exports = mongoose.model('transaction' , TransactionType);
+module.exports = mongoose.model('transaction' , TransactionSchema);
