@@ -4,7 +4,7 @@ const transactionType = require('./transactionType');
 
 const TransactionSchema = new Schema({
   accountId: { type: mongoose.Schema.Types.ObjectId, ref: 'Account' },
-  transactionType: [transactionType.schema],
+  transactionType: transactionType.schema,
   transactionDate: Date,
   transactionNumber: String,
   transactionMotive: String,

@@ -7,7 +7,7 @@ function create(request, response) {
   const data = request.body;
   let transaction = new Transaction();
   let transactionType = new TransactionType();
-  transactionType = JSON.parse(data.transactionType);
+  transactionType = data.transactionType;
   transaction.accountId = data.accountId;
   transaction.transactionType = transactionType;
   transaction.transactionDate = data.transactionDate;
@@ -22,7 +22,7 @@ function create(request, response) {
     validation.forEach( value => {
       console.log(value);
     })
-    return response.status(421).send(
+    return response.status(422).send(
       {
         success: false,
         message: "Faltan datos requeridos",
