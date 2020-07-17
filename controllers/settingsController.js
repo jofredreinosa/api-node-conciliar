@@ -35,8 +35,11 @@ function getAll(request, response) {
 }
 
 function update(request, response) {
-  console.log('put: api/accounts');
-  let data = request.body;
+  console.log('put: api/settings');
+  let data = {
+    minDateForTransactions: new Date(request.body.dateFrom),
+    maxDateForTransactions: new Date(request.body.dateTo),
+  }
   let id = request.params.id;
 
   if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -50,7 +53,7 @@ function update(request, response) {
     );
   }
 
-  Settings.findByIdAndUpdate(id, data, (error, setting) => {
+  Settings.findOneAndUpdate(id, data, (error, setting)  => {
     if (error) {
       console.log('put fail ', error);
       return response.status(500).send(
