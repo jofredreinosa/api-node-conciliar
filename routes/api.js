@@ -6,6 +6,7 @@ const accountsRoutes = require('./accountsRoutes');
 const transactionTypesRoutes = require('./transactionTypesRoutes');
 const userRoutes = require('./userRoutes');
 const transactionRoutes = require('./transactionRoutes');
+const settingsRoutes = require('./settingsRoutes');
 
 const api = app => {
 	const basePath = appconfig.basePath;
@@ -13,6 +14,7 @@ const api = app => {
   app.use(`${basePath}/accounts`, accountsRoutes);
   app.use(`${basePath}/users`, userRoutes);
   app.use(`${basePath}/transactions`, transactionRoutes);
+  app.use(`${basePath}/settings`, settingsRoutes);
 };
 
 module.exports = api;
